@@ -31,7 +31,6 @@ fibonacci <- function(n) {
   return (fibonacci(n - 1) + fibonacci(n - 2))
 }
 
-
 fibTimeVector = sapply(n, function(v) {
   
   start = Sys.time()
@@ -53,7 +52,7 @@ logTimeVector = sapply(n, function(v) {
 })
 
 png("LogFactorial.png",480,480,"px",12)
-plot(n, logTimeVector, main="", ylab="Run Time", xlab="N")
+plot(n, logTimeVector, main="Log Factorial", ylab="Run Time", xlab="N")
 dev.off()
 
 sumLogTimeVector = sapply(n, function(v) {
