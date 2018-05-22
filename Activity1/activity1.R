@@ -6,7 +6,7 @@ logTimeVector = []
 sumLogTimeVector = []
 fibTimeVector = []
 
-n = seq(1, 40, by=1)
+n = seq(1, 1000, by=1)
 
 log_factorial <- function (n) {
   # Return the log of factorial(n) for any integer n > 0
@@ -36,7 +36,7 @@ fibTimeVector = sapply(n, function(v) {
   start = Sys.time()
   fibonacci(v)
   end = Sys.time()
-  return (start-end)
+  return (end-start)
 })
 
 png("fibonacci.png",480,480,"px",12)
@@ -48,7 +48,7 @@ logTimeVector = sapply(n, function(v) {
   start = Sys.time()
   log_factorial(v)
   end = Sys.time()
-  return (start-end)
+  return (end-start)
 })
 
 png("LogFactorial.png",480,480,"px",12)
@@ -60,7 +60,7 @@ sumLogTimeVector = sapply(n, function(v) {
   start = Sys.time()
   sum_log_factorial(v)
   end = Sys.time()
-  return (start-end)
+  return (end-start)
 })
 
 png("SumLogFactorial.png",480,480,"px",12)
