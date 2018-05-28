@@ -1,4 +1,8 @@
 install.packages("ggplot2")
+install.packages("dplyr")
+library(ggplot2) 
+library(dplyr)
+
 setwd("~/CS6242/HomeWork1/")
 
 options(expressions=500000)
@@ -43,7 +47,7 @@ sum_lgamma <- function(n) {
   return(sum)
 }
 
-n = seq(1, 100, by=1)
+n = seq(1, 1000, by=1)
 
 ssum_log_gamma_loop = sapply(n, function(v) {
   start = Sys.time()
@@ -52,6 +56,24 @@ ssum_log_gamma_loop = sapply(n, function(v) {
   return (end-start)
 })
 
-png ("sum_log_gamma_loop.png",480,480,"px",12)
-plot(n,ssum_log_gamma_loop,main="Gamma Loop", ylab="Run Time", xlab="N")
+ssum_log_gamma_recursive = sapply(n, function(v) {
+  start = Sys.time()
+  sum_log_gamma_recursive(v)
+  end = Sys.time()
+  return (end-start)
+})
+
+ssum_lgamma = sapply(n,function(v) {
+  start = Sys.time()
+  sum_lgamma(v)
+  end = Sys.time()
+  return (end-start)
+})
+
+png ("Log Gamma.png",1024,800,"px",12)
+plot(n,ssum_log_gamma_loop,main="Gamma Loop", ylab="Run Time", xlab="N",type="l",col="red")
+lines(ssum_log_gamma_recursive, col="blue")
+lines(ssum_lgamma, col="orange")
+legend(0,0.25,legend=c("Loop", "Recurssive", "Lgamma"),col=c("red", "blue","orange"),lty=1:2,cex=0.8)
+
 dev.off()
