@@ -1,3 +1,6 @@
+#langelucci6
+#Homework 1
+
 install.packages("ggplot2")
 install.packages("dplyr")
 library(ggplot2) 
@@ -7,6 +10,7 @@ setwd("~/CS6242/HomeWork1/")
 
 options(expressions=500000)
 
+#Part 2 Gamma Loop
 log_gamma_loop <- function(n) {
 	if(n<=1)
 		return(0)
@@ -17,12 +21,14 @@ log_gamma_loop <- function(n) {
 	return (sum)
 }
 
+#Part 3 Gamma Recursive
 log_gamma_recursive <- function(n) {
 	if(n<=1)
 		return(0)
 	return (log(n) + log_gamma_recursive(n-1))
 }
 
+#Part 4 Sum functions for recursive, loop and c compiled lgamma
 sum_log_gamma_loop <- function(n) {
   sum<-0
   for(i in seq(1,n,1)) {
