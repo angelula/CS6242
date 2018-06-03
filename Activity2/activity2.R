@@ -1,0 +1,1 @@
+MyData <- read.csv(file="", header=TRUE, sep=",")
